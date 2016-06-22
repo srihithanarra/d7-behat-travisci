@@ -3,9 +3,6 @@ default:
     default:
       contexts:
         - FeatureContext
-        - CustomContext:
-                  baseUrl: http://localhost:8080
-                  tempPath: /var/tmp
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
@@ -13,20 +10,17 @@ default:
   extensions:
     Behat\MinkExtension:
       goutte: ~
-      base_url: http://bcd7.dev
       browser_name: phantomjs
-      selenium2:
-        wd_host: http://bcd7.dev:4444/wd/hub
+      selenium2: 
+        wd_host: http://localhost:8643/wd/hub
         capabilities:
           version: ''
+      base_url: http://behat.dev:90/behatdemo/
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
-      drush:
-        root: './html'
-        alias: 'bcd7'
       drupal:
-        drupal_root: './html'
+        drupal_root: './../behatdemo/'
       region_map:
         content: "#content"
         footer: "#footer"
@@ -35,5 +29,5 @@ default:
         right sidebar: "#column-right"
       selectors:
         message_selector: '.messages'
-        error_message_selector: '.messages.error'
-        success_message_selector: '.messages.status'
+        error_message_selector: '.messages.messages-error'
+        success_message_selector: '.messages.messages-status'

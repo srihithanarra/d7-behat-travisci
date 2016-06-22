@@ -1,6 +1,6 @@
 @api
 Feature: Login
-  @api
+  @api @javascript
   Scenario: Ensure the Login link is available for anonymous users.
     Given I am an anonymous user
      When I am on the homepage
